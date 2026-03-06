@@ -7,9 +7,16 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
     <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10 p-4 w-full">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-400 select-none hover:scale-105 transition-transform">
-          <FaVideo className="text-red-600" />
-          MOVIE-CINE
+        <Link to="/" className="flex items-center gap-3 group select-none transition-transform hover:scale-105">
+          <div className="bg-[#E50914] p-2 rounded-lg shadow-[0_0_15px_rgba(229,9,20,0.6)] group-hover:shadow-[0_0_25px_rgba(229,9,20,0.8)] transition-shadow">
+            <FaVideo className="text-white text-xl" />
+          </div>
+          <div className="flex flex-col -gap-1">
+            <span className="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 uppercase leading-none">
+              MOVIE<span className="text-[#E50914]">CINE</span>
+            </span>
+            <span className="text-[0.6rem] font-bold tracking-[0.3em] text-gray-500 uppercase ml-0.5 mt-0.5">Explore Movies</span>
+          </div>
         </Link>
 
         {/* Search Bar */}
