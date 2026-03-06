@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react';
 import { useMovies } from '../hooks/useMovies';
 import MovieCard from '../components/MovieCard';
 
-const Home = ({ debouncedSearch, favoritesHook, onMovieClick }) => {
+const Home = ({ debouncedSearch, favoritesHook, onMovieClick, setSearchQuery }) => {
   const { movies, loading, error, hasMore, loadMore } = useMovies(debouncedSearch);
   const { isFavorite, toggleFavorite } = favoritesHook;
   const observer = useRef();
@@ -27,9 +27,17 @@ const Home = ({ debouncedSearch, favoritesHook, onMovieClick }) => {
       )}
       
       {debouncedSearch && (
-        <h1 className="text-3xl font-bold text-white mb-8 text-center md:text-left">
-          Search Results: <span className="text-red-500">"{debouncedSearch}"</span>
-        </h1>
+        <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+          <h1 className="text-3xl font-bold text-white text-center md:text-left">
+            Search Results: <span className="text-red-500">"{debouncedSearch}"</span>
+          </h1>
+          <button 
+            onClick={() => setSearchQuery('')}
+            className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-gray-200 hover:text-white px-5 py-2 rounded-full font-bold transition-all shadow border border-gray-600 hover:border-gray-500"
+          >
+            ← Back to Popular
+          </button>
+        </div>
       )}
 
       {error ? (

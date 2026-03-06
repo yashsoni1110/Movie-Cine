@@ -26,6 +26,7 @@ function App() {
                   debouncedSearch={debouncedSearch} 
                   favoritesHook={favoritesHook} 
                   onMovieClick={setSelectedMovie}
+                  setSearchQuery={setSearchQuery}
                 />
               } 
             />

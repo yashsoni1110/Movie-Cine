@@ -8,9 +8,15 @@ const Favorites = ({ favoritesHook, onMovieClick }) => {
 
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen">
-      <div className="flex items-center gap-3 mb-10 border-b border-gray-800 pb-4">
-        <FaHeart className="text-red-500 text-3xl" />
-        <h1 className="text-4xl font-black text-white tracking-wide">My Favorites</h1>
+      <div className="flex items-center gap-3 mb-10 border-b border-gray-800 pb-4 flex-wrap">
+        <Link 
+          to="/" 
+          className="flex items-center gap-1 bg-gray-800 hover:bg-gray-700 text-gray-200 hover:text-white px-4 py-2 rounded-full text-sm font-bold transition-all border border-gray-600 mr-2"
+        >
+          ← Back
+        </Link>
+        <FaHeart className="text-red-500 text-3xl hidden sm:block" />
+        <h1 className="text-3xl sm:text-4xl font-black text-white tracking-wide">My Favorites</h1>
         <span className="ml-auto bg-red-600/20 text-red-400 py-1 px-3 rounded-full text-sm font-bold border border-red-500/30">
           {favorites.length} Saved
         </span>
