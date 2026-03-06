@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react';
 import { useMovies } from '../hooks/useMovies';
 import MovieCard from '../components/MovieCard';
 
-const Home = ({ debouncedSearch, favoritesHook }) => {
+const Home = ({ debouncedSearch, favoritesHook, onMovieClick }) => {
   const { movies, loading, error, hasMore, loadMore } = useMovies(debouncedSearch);
   const { isFavorite, toggleFavorite } = favoritesHook;
   const observer = useRef();
@@ -51,6 +51,7 @@ const Home = ({ debouncedSearch, favoritesHook }) => {
                   movie={movie} 
                   isFavorite={isFavorite(movie.id)}
                   onToggleFavorite={toggleFavorite}
+                  onMovieClick={onMovieClick}
                 />
               </div>
             );

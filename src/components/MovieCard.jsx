@@ -1,13 +1,16 @@
 import React from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
-const MovieCard = ({ movie, isFavorite, onToggleFavorite }) => {
+const MovieCard = ({ movie, isFavorite, onToggleFavorite, onMovieClick }) => {
   const imageUrl = movie.poster_path 
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` 
     : 'https://via.placeholder.com/500x750?text=No+Poster';
 
   return (
-    <div className="relative group rounded-xl overflow-hidden bg-gray-800 shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:shadow-2xl flex flex-col h-full">
+    <div 
+      onClick={() => onMovieClick && onMovieClick(movie)}
+      className="relative group rounded-xl overflow-hidden bg-gray-800 shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:shadow-2xl flex flex-col h-full cursor-pointer"
+    >
       <div className="relative aspect-[2/3] w-full overflow-hidden">
         <img 
           src={imageUrl} 
@@ -25,7 +28,10 @@ const MovieCard = ({ movie, isFavorite, onToggleFavorite }) => {
 
         {/* Favorite Button */}
         <button 
-          onClick={() => onToggleFavorite(movie)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleFavorite(movie);
+          }}
           className="absolute top-3 right-3 p-2 bg-black/50 backdrop-blur-md rounded-full hover:bg-black/80 transition-colors border border-white/10 group/btn z-10"
           aria-label="Toggle Favorite"
         >

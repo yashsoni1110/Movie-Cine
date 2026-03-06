@@ -9,7 +9,7 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-400 select-none hover:scale-105 transition-transform">
           <FaVideo className="text-red-600" />
-          CINE-STREAM
+          MOVIE-CINE
         </Link>
 
         {/* Search Bar */}

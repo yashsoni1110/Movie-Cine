@@ -30,3 +30,14 @@ export const searchMovies = async (query, page = 1) => {
   }
   return response.json();
 };
+
+export const fetchMovieDetails = async (id) => {
+  const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos,credits`);
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error("Invalid API key! Please add a valid TMDB API key to your .env file.");
+    }
+    throw new Error('Failed to fetch movie details');
+  }
+  return response.json();
+};

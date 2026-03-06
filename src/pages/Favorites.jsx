@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import { FaHeart, FaFilm } from 'react-icons/fa';
 
-const Favorites = ({ favoritesHook }) => {
+const Favorites = ({ favoritesHook, onMovieClick }) => {
   const { favorites, isFavorite, toggleFavorite } = favoritesHook;
 
   return (
@@ -38,6 +38,7 @@ const Favorites = ({ favoritesHook }) => {
                 movie={movie} 
                 isFavorite={isFavorite(movie.id)}
                 onToggleFavorite={toggleFavorite}
+                onMovieClick={onMovieClick}
               />
             </div>
           ))}
