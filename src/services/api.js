@@ -32,7 +32,8 @@ export const searchMovies = async (query, page = 1) => {
 };
 
 export const fetchMovieDetails = async (id) => {
-  const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos,credits`);
+  // We explicitly DO NOT limit the language parameter here for videos! If we use &language=en-US, TMDB will filter out non-english trailers.
+  const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=videos,credits`);
   if (!response.ok) {
     if (response.status === 401) {
       throw new Error("Invalid API key! Please add a valid TMDB API key to your .env file.");

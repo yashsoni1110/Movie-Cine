@@ -28,10 +28,10 @@ const MovieModal = ({ movie, onClose }) => {
     };
   }, [movie.id]);
 
-  // Find a YouTube trailer if available
+  // Find a YouTube trailer if available. If no explicit "Trailer", fallback to other valid types like Teasers.
   const trailer = details?.videos?.results?.find(
-    (vid) => vid.site === 'YouTube' && vid.type === 'Trailer'
-  );
+    (vid) => vid.site === 'YouTube' && (vid.type === 'Trailer' || vid.type === 'Teaser' || vid.type === 'Clip' || vid.type === 'Featurette')
+  ) || details?.videos?.results?.find((vid) => vid.site === 'YouTube'); // Absolute fallback to any YT video if all else fails
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
