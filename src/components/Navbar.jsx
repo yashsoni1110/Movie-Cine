@@ -13,7 +13,7 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
           </div>
           <div className="flex flex-col -gap-1">
             <span className="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 uppercase leading-none">
-              MOVIE<span className="text-[#E50914]">CINE</span>
+              CINE<span className="text-[#E50914]">STREAM</span>
             </span>
             <span className="text-[0.6rem] font-bold tracking-[0.3em] text-gray-500 uppercase ml-0.5 mt-0.5">Explore Movies</span>
           </div>

@@ -1,9 +1,8 @@
-# 🎬 Movie-Cine
+# 🎬 Cine-Stream
 
-Movie-Cine is a highly optimized, responsive Netflix-lite movie discovery application powered by the **TMDB (The Movie Database) API**. It is built using modern **React hooks, Vite, and Tailwind CSS v4**.
+Cine-Stream is a highly optimized, responsive Netflix-lite movie discovery application powered by the **TMDB (The Movie Database) API**. It is built using modern **React hooks, Vite, and Tailwind CSS v4**.
 
 ### 🌐 Live Demo: [https://movie-cine-three.vercel.app/](https://movie-cine-three.vercel.app/)
-
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
@@ -11,8 +10,7 @@ Movie-Cine is a highly optimized, responsive Netflix-lite movie discovery applic
 
 # Screenshot:
 
-![Movie-Cine Preview Screenshot](screenshot.png) <!-- Replace with actual screenshot when hosted -->
-
+![Cine-Stream Preview Screenshot](screenshot.png) <!-- Replace with actual screenshot when hosted -->
 
 ---
 
@@ -26,9 +24,9 @@ Movie-Cine is a highly optimized, responsive Netflix-lite movie discovery applic
 
 ### ⚡ Performance Mastery)
 
-- **Infinite Scrolling API**: Replaces tedious pagination buttons. Powered by the React `IntersectionObserver` API, Movie-Cine intelligently loads the next "page" of 20 movies automatically the moment you scroll to the bottom of your screen to prevent crashing the DOM.
+- **Infinite Scrolling API**: Replaces tedious pagination buttons. Powered by the React `IntersectionObserver` API, Cine-Stream intelligently loads the next "page" of 20 movies automatically the moment you scroll to the bottom of your screen to prevent crashing the DOM.
 - **Search Debouncing**: Custom `useDebounce` hook waits exactly `500ms` after you finish typing before triggering the TMDB Search API—saving hundreds of wasted bandwidth-heavy network requests!
-- **Favorites & LocalStorage**: Easily "Heart" any movie card. Movie-Cine saves your selections offline inside your browser's persistent `Local Storage`.
+- **Favorites & LocalStorage**: Easily "Heart" any movie card. Cine-Stream saves your selections offline inside your browser's persistent `Local Storage`.
 - **Netflix-Style Video Player**: Clicking a movie triggers an immersive, full-screen React Portal modal containing the movie's cinematic trailer seamlessly embedded from YouTube (supporting international/Bollywood movie tags!), alongside deep-details like ratings, runtimes, cast, and genres.
 
 ---
