@@ -1,4 +1,4 @@
-# Cine-Stream App:
+# Movie-Cine App:
 
 Please read the following requirements carefully and build the application step-by-step using **React.js**, **Vite**, and **Tailwind CSS v4**. Provide all the necessary code, including component structures, hooks, and routing setup.
 
