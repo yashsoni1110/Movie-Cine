@@ -1,15 +1,18 @@
 # 🎬 Movie-Cine
 
-![Movie-Cine Vercel Deployment](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)
+Movie-Cine is a highly optimized, responsive Netflix-lite movie discovery application powered by the **TMDB (The Movie Database) API**. It is built using modern **React hooks, Vite, and Tailwind CSS v4**.
+
+### 🌐 Live Demo: [https://movie-cine-three.vercel.app/](https://movie-cine-three.vercel.app/)
+
+
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-Movie-Cine is a highly optimized, responsive Netflix-lite movie discovery application powered by the **TMDB (The Movie Database) API**. It is built using modern **React hooks, Vite, and Tailwind CSS v4**.
-
 # Screenshot:
 
 ![Movie-Cine Preview Screenshot](screenshot.png) <!-- Replace with actual screenshot when hosted -->
+
 
 ---
 
