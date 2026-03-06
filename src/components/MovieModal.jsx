@@ -28,10 +28,14 @@ const MovieModal = ({ movie, onClose }) => {
     };
   }, [movie.id]);
 
-  // Find a YouTube trailer if available. If no explicit "Trailer", fallback to other valid types like Teasers.
-  const trailer = details?.videos?.results?.find(
-    (vid) => vid.site === 'YouTube' && (vid.type === 'Trailer' || vid.type === 'Teaser' || vid.type === 'Clip' || vid.type === 'Featurette')
-  ) || details?.videos?.results?.find((vid) => vid.site === 'YouTube'); // Absolute fallback to any YT video if all else fails
+  // Find a YouTube trailer if available with a smart priority system
+  const videos = details?.videos?.results || [];
+  const officialTrailer = videos.find(vid => vid.site === 'YouTube' && vid.type === 'Trailer' && vid.name.toLowerCase().includes('official'));
+  const anyTrailer = videos.find(vid => vid.site === 'YouTube' && vid.type === 'Trailer');
+  const otherClip = videos.find(vid => vid.site === 'YouTube' && ['Teaser', 'Clip', 'Featurette'].includes(vid.type));
+  const fallbackVideo = videos.find(vid => vid.site === 'YouTube');
+  
+  const trailer = officialTrailer || anyTrailer || otherClip || fallbackVideo;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -68,11 +72,17 @@ const MovieModal = ({ movie, onClose }) => {
                 ></iframe>
               ) : (
                 <div 
-                  className="w-full h-full bg-cover bg-center"
-                  style={{ 
-                    backgroundImage: `url(https://image.tmdb.org/t/p/original${details.backdrop_path || details.poster_path})` 
-                  }}
-                ></div>
+                  className="w-full h-full bg-[#111] flex flex-col justify-center items-center rounded-t-xl"
+                  style={ (details?.backdrop_path || details?.poster_path) ? { 
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original${details.backdrop_path || details.poster_path})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  } : {}}
+                >
+                  {!(details?.backdrop_path || details?.poster_path) && (
+                    <span className="text-gray-500 font-bold tracking-widest uppercase">No Image Available</span>
+                  )}
+                </div>
               )}
               {/* Dark Gradient Overlay to fade smoothly into the background */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/20 to-transparent pointer-events-none"></div>

@@ -1,24 +1,33 @@
 import React from 'react';
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaHeart, FaRegHeart, FaVideo } from 'react-icons/fa';
 
 const MovieCard = ({ movie, isFavorite, onToggleFavorite, onMovieClick }) => {
-  const imageUrl = movie.poster_path 
-    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` 
-    : 'https://via.placeholder.com/500x750?text=No+Poster';
 
   return (
     <div 
       onClick={() => onMovieClick && onMovieClick(movie)}
       className="relative group rounded-xl overflow-hidden bg-gray-800 shadow-lg transition-transform duration-300 hover:scale-[1.03] hover:shadow-2xl flex flex-col h-full cursor-pointer"
     >
-      <div className="relative aspect-[2/3] w-full overflow-hidden">
-        <img 
-          src={imageUrl} 
-          alt={movie.title} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-80"></div>
+      <div className="relative aspect-[2/3] w-full overflow-hidden bg-[#111]">
+        
+        {/* Fallback UI (Stays behind the image, visible if image throws error or is missing) */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center bg-gray-800 p-4 text-center border-b border-gray-700/50">
+          <FaVideo className="text-gray-600 text-4xl mb-3 drop-shadow-md" />
+          <span className="text-gray-500 text-sm font-bold uppercase tracking-widest line-clamp-3">{movie.title || "No Poster"}</span>
+        </div>
+
+        {/* Real Poster Image (Renders on top if available) */}
+        {movie.poster_path && (
+          <img 
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+            alt={movie.title} 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 z-0" 
+            loading="lazy"
+            onError={(e) => { e.target.style.display = 'none'; }}
+          />
+        )}
+        
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-90 z-10 pointer-events-none"></div>
         
         {/* Rating Badge */}
         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md border border-white/10 flex items-center gap-1">

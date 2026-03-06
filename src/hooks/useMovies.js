@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { fetchPopularMovies, searchMovies } from '../services/api';
 
 export const useMovies = (searchQuery) => {
@@ -19,8 +19,8 @@ export const useMovies = (searchQuery) => {
     let isMounted = true;
 
     const fetchMoviesData = async () => {
-      // Don't fetch if no more items or currently loading
-      if (!hasMore && page !== 1) return;
+      // Don't fetch if no more items or currently loading (double-check condition to prevent spam fetches)
+      if ((!hasMore && page !== 1) || loading) return;
       
       setLoading(true);
       setError(null);
@@ -34,6 +34,7 @@ export const useMovies = (searchQuery) => {
           setMovies((prev) => {
             if (page === 1) return data.results; // Ensure we clean start on page 1
             const newMovies = [...prev, ...data.results];
+            // Filter duplicates which sometimes happen when TMDB pagination shifts during fetch
             const uniqueIds = new Set();
             return newMovies.filter(m => {
               if (!uniqueIds.has(m.id)) {
@@ -63,11 +64,11 @@ export const useMovies = (searchQuery) => {
     };
   }, [searchQuery, page]); // Only run on page or searchQuery change
 
-  const loadMore = () => {
+  const loadMore = useCallback(() => {
     if (!loading && hasMore) {
       setPage(prev => prev + 1);
     }
-  };
+  }, [loading, hasMore]);
 
   return { movies, loading, error, hasMore, loadMore };
 };
